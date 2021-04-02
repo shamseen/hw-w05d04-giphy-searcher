@@ -1,3 +1,5 @@
+import { SearchIcon } from "../shared/AppIcons";
+
 export default function SearchForm({ handleSubmit, handleChange, searchStr }) {
   return (
     <form onSubmit={handleSubmit} className="form-horizontal">
@@ -9,7 +11,9 @@ export default function SearchForm({ handleSubmit, handleChange, searchStr }) {
         onChange={handleChange}
         value={searchStr}
       />
-      <button type="submit">Search</button>
+      <button type="submit">
+        <SearchIcon height="2rem" width="2rem" />
+      </button>
     </form>
   );
 }
