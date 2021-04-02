@@ -83,6 +83,22 @@ the button and input when the browser is at least
   input + button {
     margin-left: 1rem;
   }
+
+  .gallery {
+    column-count: 2;
+  }
+}
+
+@media (min-width: 1000px) {
+  .gallery {
+    column-count: 3;
+  }
+}
+
+@media (min-width: 1400px) {
+  .gallery {
+    column-count: 4;
+  }
 }
 
 img {
