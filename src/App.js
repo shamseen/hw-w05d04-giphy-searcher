@@ -10,8 +10,7 @@ export default function App() {
       <div>
         <h1>Giphy Searcher</h1>
         <SearchForm />
-        <SearchResults />
-        {JSON.stringify(images, null, 4)}
+        <SearchResults images={images} />
       </div>
     </div>
   );

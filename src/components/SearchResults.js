@@ -1,8 +1,16 @@
-export default function SearchResult(props) {
+export default function SearchResult({ images }) {
   // return early if there are no images
-  if (!props.length) {
+  if (!images.length) {
     return <h2>No Images Found!</h2>;
   }
 
-  return <div className="gallery">[results]</div>;
+  return (
+    <div className="gallery">
+      {images.map((image) => (
+        <div key={image.id} className="gif">
+          <img src={image.url} />
+        </div>
+      ))}
+    </div>
+  );
 }
