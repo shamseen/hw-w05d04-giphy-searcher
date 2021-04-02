@@ -1,11 +1,13 @@
 import React, { useState, useEffect } from "react";
 import SearchForm from "./components/SearchForm";
+import SearchHeader from "./components/SearchHeader";
 import SearchResults from "./components/SearchResults";
 import "./styles.scss";
 
 export default function App() {
   // state vars
   const [searchStr, setSearchStr] = useState("spongebob");
+  const [lastSearch, setLastSearch] = useState("");
   const [images, setImages] = useState([]);
 
   // formatting GET
@@ -30,6 +32,8 @@ export default function App() {
 
       // updating state
       setImages(data.data);
+      setLastSearch(searchStr); //show in header
+      setSearchStr(""); // blanking out search box
 
       // error handling
     } catch (err) {
@@ -54,7 +58,7 @@ export default function App() {
   return (
     <div className="App">
       <div>
-        <h1>Giphy Searcher</h1>
+        <SearchHeader lastSearch={lastSearch} />
         <SearchForm
           handleChange={handleChange}
           handleSubmit={handleSubmit}

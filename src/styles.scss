@@ -11,6 +11,23 @@
   --secondary: #ff7f50;
   --secondary-light: #ffa483;
   --white: #fff;
+  --muted: #a1a1a1;
+}
+
+header {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 1rem 0;
+}
+
+h1,
+p {
+  margin: 0;
+}
+
+.muted {
+  color: var(--muted);
 }
 
 /* Remove the body margin */
@@ -90,8 +107,9 @@ the button and input when the browser is at least
 }
 
 @media (min-width: 1000px) {
-  .gallery {
-    column-count: 3;
+  header {
+    align-items: center;
+    flex-direction: row;
   }
 }
 
@@ -100,7 +118,6 @@ the button and input when the browser is at least
     column-count: 4;
   }
 }
-
 img {
   margin-bottom: 1rem;
   width: 100%;
