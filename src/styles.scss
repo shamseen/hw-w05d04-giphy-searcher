@@ -126,10 +126,13 @@ the button and input when the browser is at least
   }
 }
 
-@media (min-width: 1000px) {
+@media (min-width: 800px) {
   header {
     align-items: center;
     flex-direction: row;
+  }
+  .gallery {
+    column-count: 3;
   }
 }
 
