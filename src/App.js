@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import SearchForm from "./components/SearchForm";
 import SearchHeader from "./components/SearchHeader";
 import SearchResults from "./components/SearchResults";
+import SearchResult from "./components/SearchResult";
 import "./styles.scss";
 
 export default function App() {
@@ -23,7 +24,11 @@ export default function App() {
   // defining GET
   async function getImages() {
     // build a URL from the searchOptions object
-    const url = `${searchOptions.api}${searchOptions.endpoint}?api_key=${searchOptions.key}&q=${searchStr} &limit=${searchOptions.limit}&offset=${searchOptions.offset}&rating=${searchOptions.rating}&lang=en`;
+    const url = `${searchOptions.api}${searchOptions.endpoint}?
+      api_key=${searchOptions.key}&q=${searchStr} 
+      &limit=${searchOptions.limit}
+      &offset=${searchOptions.offset}
+      &rating=${searchOptions.rating}&lang=en`;
 
     try {
       // GET
@@ -51,6 +56,8 @@ export default function App() {
     setSearchStr(event.target.value);
   }
 
+  function handleImgHover(event) {}
+
   function handleSubmit(event) {
     event.preventDefault();
     getImages();
@@ -58,13 +65,14 @@ export default function App() {
   return (
     <div className="App">
       <div>
+        <SearchResult />
         <SearchHeader lastSearch={lastSearch} />
         <SearchForm
           handleChange={handleChange}
           handleSubmit={handleSubmit}
           searchStr={searchStr}
         />
-        <SearchResults images={images} />
+        {/* <SearchResults images={images} /> */}
       </div>
     </div>
   );
