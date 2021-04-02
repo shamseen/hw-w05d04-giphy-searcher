@@ -1,6 +1,6 @@
 import SearchResult from "./SearchResult";
 
-export default function SearchResults({ images }) {
+export default function SearchResults({ images, handleClick }) {
   // return early if there are no images
   if (!images.length) {
     return <h2>No Images Found!</h2>;
