@@ -2,6 +2,7 @@ import React from "react";
 import SearchForm from "./components/SearchForm";
 import SearchResults from "./components/SearchResults";
 import "./styles.scss";
+import images from "./data.js";
 
 export default function App() {
   return (
@@ -10,6 +11,7 @@ export default function App() {
         <h1>Giphy Searcher</h1>
         <SearchForm />
         <SearchResults />
+        {JSON.stringify(images, null, 4)}
       </div>
     </div>
   );
