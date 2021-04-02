@@ -5,6 +5,7 @@ import "./styles.scss";
 
 export default function App() {
   // state vars
+  const [searchStr, setSearchStr] = useState("spongebob");
   const [images, setImages] = useState([]);
 
   // formatting GET
@@ -16,39 +17,49 @@ export default function App() {
     endpoint: "/search"
   };
 
-  // calling giphy api
-  useEffect(() => {
-    /* -- DEFINING FUNC -- */
-    async function getImages() {
-      // testing - hard coded str
-      const searchString = "minions";
+  /* --- API call --- */
+  // defining GET
+  async function getImages() {
+    // build a URL from the searchOptions object
+    const url = `${searchOptions.api}${searchOptions.endpoint}?api_key=${searchOptions.key}&q=${searchStr} &limit=${searchOptions.limit}&offset=${searchOptions.offset}&rating=${searchOptions.rating}&lang=en`;
 
-      // build a URL from the searchOptions object
-      const url = `${searchOptions.api}${searchOptions.endpoint}?api_key=${searchOptions.key}&q=${searchString} &limit=${searchOptions.limit}&offset=${searchOptions.offset}&rating=${searchOptions.rating}&lang=en`;
+    try {
+      // GET
+      const response = await fetch(url);
+      const data = await response.json();
 
-      try {
-        // GET
-        const response = await fetch(url);
-        const data = await response.json();
+      // updating state
+      setImages(data.data);
 
-        // updating state
-        setImages(data.data);
-
-        // error handling
-      } catch (err) {
-        console.error(err);
-      }
+      // error handling
+    } catch (err) {
+      console.error(err);
     }
+  }
 
-    /* -- CALLING FUNC -- */
+  // calling GET
+  useEffect(() => {
     getImages();
   }, []);
 
+  /* --- Event handlers --- */
+  function handleChange(event) {
+    setSearchStr(event.target.value);
+  }
+
+  function handleSubmit(event) {
+    event.preventDefault();
+    getImages();
+  }
   return (
     <div className="App">
       <div>
         <h1>Giphy Searcher</h1>
-        <SearchForm />
+        <SearchForm
+          handleChange={handleChange}
+          handleSubmit={handleSubmit}
+          searchStr={searchStr}
+        />
         <SearchResults images={images} />
       </div>
     </div>
