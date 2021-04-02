@@ -20,26 +20,22 @@
   box-sizing: border-box;
 }
 
-body{
-  background: #f9f9f9;
-  font-size: 16px;
-  font-family: 'Raleway', sans-serif;
-}
-
 .container{
   padding: 1em 0;
   float: left;
-  width: 50%;
+  border-radius: 10px;
+  height: fit-content;
 }
 
 
 .result {
   position: relative;
   width: 100%;
-  margin: auto;
-  overflow: hidden;
-  margin-bottom: 1rem;
-  border-radius: 10px;
+  // border-radius: 10px;
+
+  * {
+    border-radius: 10px;
+  }
 
   img {
     width: 100%;
@@ -47,14 +43,14 @@ body{
   }
 
   .overlay {
-    background: rgba(0,0,0,0.7);
+    background: rgba(0,0,0,0.5);
     position: absolute;
-    // height: 97%;
     left: 0;
     top: 0;
     bottom: 0;
     right: 0;
     opacity: 0;
+    height: 98%;
     @include x-transition;
   }
 
@@ -69,8 +65,9 @@ body{
     color: #fff;
     font-weight: 500;
     letter-spacing: 0.15em;
-    margin-bottom: 0.5em;
     text-transform: uppercase;
+    font-size: 16px;
+    font-family: 'Raleway', sans-serif;
     @include x-transform;
     @include x-transition;
   }

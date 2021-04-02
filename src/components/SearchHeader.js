@@ -6,6 +6,9 @@ export default function SearchHeader({ lastSearch }) {
       <div className="brand">
         <img src={logo} alt="" />
         <h1>Giphy Searcher</h1>
+        <p className="muted">
+          Showing results for <strong>{lastSearch}</strong>
+        </p>
       </div>
     </header>
   );
